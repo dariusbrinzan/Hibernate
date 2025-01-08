@@ -1,7 +1,6 @@
 package edu.jpa.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
@@ -9,7 +8,12 @@ public class Department {
     @Id
     private int id;
     private String name;
+
+    @ManyToOne
+    @JoinColumn(name = "company_id")
     private Company company;
+
+    @OneToMany(mappedBy = "department", cascade = CascadeType.ALL)
     private List<Employee> employees;
 
     public int getId() {

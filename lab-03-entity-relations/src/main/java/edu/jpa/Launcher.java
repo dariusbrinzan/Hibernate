@@ -22,10 +22,9 @@ public class Launcher {
         sampleCompany(emf.createEntityManager());
         sampleDepartment(emf.createEntityManager());
         sampleEmployee(emf.createEntityManager());
-		
-		emf.close();
-    }
 
+        emf.close();
+    }
 
     private static void init(EntityManager em) {
         em.getTransaction().begin();
@@ -45,7 +44,7 @@ public class Launcher {
         employee.setId(1);
         employee.setName("Employee #1");
         employee.setDepartment(department);
-        employee.setProjects(new ArrayList<Project>());
+        employee.setProjects(new ArrayList<>());
 
         Project project = new Project();
         project.setName("Project #1");
@@ -65,50 +64,40 @@ public class Launcher {
         em.getTransaction().commit();
     }
 
-
     private static void sampleCompany(EntityManager em) {
         em.getTransaction().begin();
 
         Company company = em.find(Company.class, 1);
-        println("Company.Name = [" + company.getName() + "]");
+        System.out.println("Company.Name = [" + company.getName() + "]");
 
-        for (int i = 0; i < company.getDepartments().size(); i++) {
-            Department department = company.getDepartments().get(i);
-            println("Company.Department[" + i + "].Name = [" + department.getName() + "]");
+        for (Department department : company.getDepartments()) {
+            System.out.println("Company.Department.Name = [" + department.getName() + "]");
         }
 
         em.getTransaction().rollback();
     }
-
 
     private static void sampleDepartment(EntityManager em) {
         em.getTransaction().begin();
 
         Department department = em.find(Department.class, 1);
-        println("Department.Company.Name = [" + department.getCompany().getName() + "]");
-        println("Department.Name = [" + department.getName() + "]");
+        System.out.println("Department.Company.Name = [" + department.getCompany().getName() + "]");
+        System.out.println("Department.Name = [" + department.getName() + "]");
 
         em.getTransaction().rollback();
     }
-
 
     private static void sampleEmployee(EntityManager em) {
         em.getTransaction().begin();
 
         Employee employee = em.find(Employee.class, 1);
-        println("Employee.Department.Name = [" + employee.getDepartment().getName() + "]");
-        println("Employee.Name = [" + employee.getName() + "]");
+        System.out.println("Employee.Department.Name = [" + employee.getDepartment().getName() + "]");
+        System.out.println("Employee.Name = [" + employee.getName() + "]");
 
-        for (int i = 0; i < employee.getProjects().size(); i++) {
-            Project project = employee.getProjects().get(i);
-            println("Employee.Project[" + i + "].Name = [" + project.getName() + "]");
+        for (Project project : employee.getProjects()) {
+            System.out.println("Employee.Project.Name = [" + project.getName() + "]");
         }
 
         em.getTransaction().rollback();
-    }
-
-
-    private static void println(String s) {
-        System.out.println("[==CONSOLE==] " + s);
     }
 }
