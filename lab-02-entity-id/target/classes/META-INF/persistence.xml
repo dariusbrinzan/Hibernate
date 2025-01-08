@@ -11,19 +11,22 @@
         <class>edu.jpa.entity.Department_3</class>
 
         <properties>
-            <property name="jakarta.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+            <!-- Corectare driver -->
+            <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
+            <!-- URL conexiune cu container -->
             <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://127.0.0.1:3306/JPA_DB_02"/>
+            <!-- Autentificare -->
             <property name="jakarta.persistence.jdbc.user" value="root"/>
             <property name="jakarta.persistence.jdbc.password" value="root"/>
 
+            <!-- Configurări Hibernate -->
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL57Dialect"/>
-
             <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.format_sql" value="true"/>
-
             <property name="hibernate.cache.use.query_cache" value="false"/>
             <property name="hibernate.cache.use_second_level_cache" value="false"/>
 
+            <!-- Strategia hbm2ddl -->
             <property name="hibernate.hbm2ddl.auto" value="create"/>
         </properties>
     </persistence-unit>
