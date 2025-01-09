@@ -2,8 +2,11 @@ package edu.jpa.TABLE_PER_SUBCLASS.entity;
 
 import jakarta.persistence.*;
 
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Person {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String name;
 

@@ -2,11 +2,17 @@ package edu.jpa.TABLE_PER_HIERARCHY.entity;
 
 import jakarta.persistence.*;
 
+@Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "TYPE", discriminatorType = DiscriminatorType.STRING)
 public abstract class Person {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
     private String name;
 
+    // Getters and setters
     public int getId() {
         return id;
     }
