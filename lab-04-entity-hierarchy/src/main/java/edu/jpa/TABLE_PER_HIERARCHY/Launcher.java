@@ -30,6 +30,7 @@ public class Launcher {
 
         Executive executive = new Executive();
         executive.setName("Executive #1");
+        executive.setSalary(5000.0);
         executive.setBonus(1500.0);
         em.persist(executive);
 
