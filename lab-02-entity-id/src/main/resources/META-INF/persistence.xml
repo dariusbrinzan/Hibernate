@@ -14,7 +14,7 @@
             <!-- Corectare driver -->
             <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
             <!-- URL conexiune cu container -->
-            <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://127.0.0.1:3306/JPA_DB_02"/>
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://127.0.0.1:3306/DB_LAB_02"/>
             <!-- Autentificare -->
             <property name="jakarta.persistence.jdbc.user" value="root"/>
             <property name="jakarta.persistence.jdbc.password" value="root"/>
